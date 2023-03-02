@@ -1,8 +1,8 @@
 /*********** Variables, Inicializaciones y Reseteo de Estilos ***********/
 
-:root {
+/*:root {
 	
-}
+}*/
 
 * {
 	margin: 0;
@@ -30,7 +30,7 @@ body {
 	display: grid;
 	grid-gap: 15px;
 	background-color: black;
-	grid-template: auto auto auto / auto auto auto;
+	grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
 }
 
 .gameboard__square {
