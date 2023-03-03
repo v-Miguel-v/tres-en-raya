@@ -1,11 +1,26 @@
-//* Valores por Defecto e Inicializaciones
 "use strict"
+//* Valores por Defecto e Inicializaciones
+let currentTurn = 0;
+let currentSymbol = "X";
 let isTheGameFinished = false;
 const gameboard = [[,,,],[,,,],[,,,]];
 const gameboardSquares = document.getElementsByClassName("gameboard__square");
 
-//* Lógica del Juego
-let currentSymbol = "X";
+//* Lógica Principal del Juego
+for (const square of gameboardSquares) {
+	square.addEventListener("click", () => {
+		if (!isTheGameFinished) {
+			if (square.textContent === "") {
+				square.textContent = currentSymbol;
+				registerMove(square);
+				switchSymbol();
+				if (isTheGameFinished) alert("Juego terminado");
+			}
+		}
+	});
+}
+
+//* Funciones Complementarias
 function switchSymbol() {
 	switch (currentSymbol) {
 		case "X":
@@ -18,6 +33,7 @@ function switchSymbol() {
 }
 
 function registerMove(mySquare) {
+	currentTurn++;
 	const mySquareNumber = Number(mySquare.id[17]);
 	const mySquareSymbol = mySquare.textContent;
 	switch (mySquareNumber) {
@@ -58,10 +74,7 @@ function registerMove(mySquare) {
 			verifyWinAndLoseConditions(mySquareSymbol, 2, 2);
 			break;
 	}
-}
-
-function isThereAnotherSymbolAdjacent(i, j, symbol) {
-	return (gameboard[i] !== undefined && gameboard[i][j] !== undefined) && (gameboard[i][j] === symbol);
+	if (currentTurn === 9 && !isTheGameFinished) isTheGameFinished = true;
 }
 
 function verifyWinAndLoseConditions(mySymbol, iIndex, jIndex) {
@@ -143,13 +156,6 @@ function verifyWinAndLoseConditions(mySymbol, iIndex, jIndex) {
 	}
 }
 
-for (const square of gameboardSquares) {
-	square.addEventListener("click", () => {
-		if (!isTheGameFinished) {
-			square.textContent = currentSymbol;
-			registerMove(square);
-			switchSymbol();
-			if (isTheGameFinished) alert("Juego terminado");
-		}
-	});
+function isThereAnotherSymbolAdjacent(i, j, symbol) {
+	return (gameboard[i] !== undefined && gameboard[i][j] !== undefined) && (gameboard[i][j] === symbol);
 }
