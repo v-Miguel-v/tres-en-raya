@@ -25,16 +25,13 @@ body {
 }
 
 .gameboard {
-	width: 400px;
-	height: 400px;
+	/* Responsive Properties: width, height, grid-gap, font-size. */
 	display: grid;
-	grid-gap: 15px;
 	background-color: black;
 	grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
 }
 
 .gameboard__square {
-	font-size: 40px;
 	display: flex;
 	align-items: center;
 	justify-content: center;

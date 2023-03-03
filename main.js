@@ -1,12 +1,14 @@
 "use strict"
-//* Valores por Defecto e Inicializaciones
+//* Defaut Values and Initializations
+let symbol1 = "✨";
+let symbol2 = "💮";
 let currentTurn = 0;
-let currentSymbol = "X";
+let currentSymbol = symbol1;
 let isTheGameFinished = false;
-const gameboard = [[,,,],[,,,],[,,,]];
+const referenceGameboard = [[,,,],[,,,],[,,,]];
 const gameboardSquares = document.getElementsByClassName("gameboard__square");
 
-//* Lógica Principal del Juego
+//* Main Game Logic
 for (const square of gameboardSquares) {
 	square.addEventListener("click", () => {
 		if (!isTheGameFinished) {
@@ -20,14 +22,14 @@ for (const square of gameboardSquares) {
 	});
 }
 
-//* Funciones Complementarias
+//* Complementary Functions
 function switchSymbol() {
 	switch (currentSymbol) {
-		case "X":
-			currentSymbol = "O";
+		case symbol1:
+			currentSymbol = symbol2;
 			break;
-		case "O":
-			currentSymbol = "X";
+		case symbol2:
+			currentSymbol = symbol1;
 			break;
 	}
 }
@@ -38,39 +40,39 @@ function registerMove(mySquare) {
 	const mySquareSymbol = mySquare.textContent;
 	switch (mySquareNumber) {
 		case 0:
-			gameboard[0][0] = mySquareSymbol;
+			referenceGameboard[0][0] = mySquareSymbol;
 			verifyWinAndLoseConditions(mySquareSymbol, 0, 0);
 			break;
 		case 1:
-			gameboard[0][1] = mySquareSymbol;
+			referenceGameboard[0][1] = mySquareSymbol;
 			verifyWinAndLoseConditions(mySquareSymbol, 0, 1);
 			break;
 		case 2:
-			gameboard[0][2] = mySquareSymbol;
+			referenceGameboard[0][2] = mySquareSymbol;
 			verifyWinAndLoseConditions(mySquareSymbol, 0, 2);
 			break;
 		case 3:
-			gameboard[1][0] = mySquareSymbol;
+			referenceGameboard[1][0] = mySquareSymbol;
 			verifyWinAndLoseConditions(mySquareSymbol, 1, 0);
 			break;
 		case 4:
-			gameboard[1][1] = mySquareSymbol;
+			referenceGameboard[1][1] = mySquareSymbol;
 			verifyWinAndLoseConditions(mySquareSymbol, 1, 1);
 			break;
 		case 5:
-			gameboard[1][2] = mySquareSymbol;
+			referenceGameboard[1][2] = mySquareSymbol;
 			verifyWinAndLoseConditions(mySquareSymbol, 1, 2);
 			break;
 		case 6:
-			gameboard[2][0] = mySquareSymbol;
+			referenceGameboard[2][0] = mySquareSymbol;
 			verifyWinAndLoseConditions(mySquareSymbol, 2, 0);
 			break;
 		case 7:
-			gameboard[2][1] = mySquareSymbol;
+			referenceGameboard[2][1] = mySquareSymbol;
 			verifyWinAndLoseConditions(mySquareSymbol, 2, 1);
 			break;
 		case 8:
-			gameboard[2][2] = mySquareSymbol;
+			referenceGameboard[2][2] = mySquareSymbol;
 			verifyWinAndLoseConditions(mySquareSymbol, 2, 2);
 			break;
 	}
@@ -157,5 +159,5 @@ function verifyWinAndLoseConditions(mySymbol, iIndex, jIndex) {
 }
 
 function isThereAnotherSymbolAdjacent(i, j, symbol) {
-	return (gameboard[i] !== undefined && gameboard[i][j] !== undefined) && (gameboard[i][j] === symbol);
+	return (referenceGameboard[i] !== undefined && referenceGameboard[i][j] !== undefined) && (referenceGameboard[i][j] === symbol);
 }
