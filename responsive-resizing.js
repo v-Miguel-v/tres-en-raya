@@ -8,7 +8,7 @@ const symbolsSize = 0.10;
 window.addEventListener("load", setGameboardSize);
 window.addEventListener("resize", setGameboardSize);
 
-//* Resizing
+//* Resizing Gameboard
 function setGameboardSize() {
 	if (window.innerWidth < window.innerHeight) {
 		gameboardSize = Math.trunc(baseSize * window.innerWidth);

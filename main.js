@@ -16,7 +16,7 @@ for (const square of gameboardSquares) {
 				square.textContent = currentSymbol;
 				registerMove(square);
 				switchSymbol();
-				if (isTheGameFinished) alert("Juego terminado");
+				if (isTheGameFinished) showEndGameScreen();
 			}
 		}
 	});
@@ -160,4 +160,34 @@ function verifyWinAndLoseConditions(mySymbol, iIndex, jIndex) {
 
 function isThereAnotherSymbolAdjacent(i, j, symbol) {
 	return (referenceGameboard[i] !== undefined && referenceGameboard[i][j] !== undefined) && (referenceGameboard[i][j] === symbol);
+}
+
+function showEndGameScreen() {
+	const button = document.createElement("button");
+	button.style = `
+		position: absolute;
+		font-size: var(--minor-buttons-size);
+	`;
+	button.innerText = "Regresar al Menú Principal";
+	htmlBody.appendChild(button);
+	button.addEventListener("click", () => {
+		mainMenu.classList.remove("inactive");
+		gameboard.classList.add("inactive");
+		button.remove();
+		cleanGameboard();
+	});
+}
+
+function cleanGameboard() {
+	currentTurn = 0;
+	isTheGameFinished = false;
+	referenceGameboard.pop();
+	referenceGameboard.pop();
+	referenceGameboard.pop();
+	referenceGameboard.push([,,,]);
+	referenceGameboard.push([,,,]);
+	referenceGameboard.push([,,,]);
+	for (const square of gameboardSquares) {
+		square.textContent = "";
+	}
 }

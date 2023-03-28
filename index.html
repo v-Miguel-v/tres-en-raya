@@ -3,12 +3,29 @@
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>Tren en Raya</title>
+	<title>Tres en Raya</title>
 	<link rel="shortcut icon" type="image/png" href="#"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com"/>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+	<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
-	<div class="gameboard">
+	<div class="main-menu">
+		<h1 class="main-menu__title">Tres en Raya</h1>
+		<div class="main-menu__center-buttons">
+			<button class="main-menu__main-button" id="play-button">Jugar</button>
+			<div class="main-menu__minor-buttons">
+				<button id="settings-button">⚙️</button>
+				<button id="rankings-button">🏆</button>
+			</div>
+		</div>
+		<div class="main-menu__footer-buttons">
+			<button id="language-button">🇪🇸</button>
+			<button id="darkmode-button">🌙</button>
+		</div>
+	</div>
+	<div class="gameboard inactive">
 		<div class="gameboard__square" id="gameboard-square-0"></div>
 		<div class="gameboard__square" id="gameboard-square-1"></div>
 		<div class="gameboard__square" id="gameboard-square-2"></div>
@@ -20,6 +37,7 @@
 		<div class="gameboard__square" id="gameboard-square-8"></div>
 	</div>
 	<script type="text/javascript" src="responsive-resizing.js"></script>
+	<script type="text/javascript" src="menus.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 </body>
 </html>

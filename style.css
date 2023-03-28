@@ -1,8 +1,11 @@
-/*********** Variables, Inicializaciones y Reseteo de Estilos ***********/
+/***** Variables, Initializations and Resetting Styles *****/
 
-/*:root {
-	
-}*/
+:root {
+	--title-size: 16vh;
+	--main-button-size: 11vh;
+	--minor-buttons-size: 6vh;
+	--footer-buttons-size: 8vh;
+}
 
 * {
 	margin: 0;
@@ -12,17 +15,68 @@
 
 html {
 	font-size: 62.5%;
+	font-family: 'Tilt Neon', cursive;
 }
 
-/******************* Estilos específicos de la página *******************/
+button {
+	font-size: inherit;
+	font-family: inherit;
+}
+
+/********************** General Styles **********************/
 
 body {
-	width: 100vw;
 	height: 100vh;
+	height: 100svh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
+
+/************************ Main Menu ************************/
+
+.main-menu {
+	padding: 5vh 5vw;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.main-menu__title {
+	font-size: var(--title-size);
+	text-align: center;
+}
+
+.main-menu__center-buttons {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 5vh;
+	gap: 3vh;
+}
+
+.main-menu__main-button {
+	padding: 1.8vh 6vh;
+	font-size: var(--main-button-size);
+}
+
+.main-menu__minor-buttons {
+	font-size: var(--minor-buttons-size);
+	display: flex;
+	gap: 13vh;
+}
+
+.main-menu__footer-buttons {
+	width: 100%;
+	display: flex;
+	font-size: var(--footer-buttons-size);
+	justify-content: space-between;
+}
+
+/************************ Gameboard ************************/
 
 .gameboard {
 	/* Responsive Properties: width, height, grid-gap, font-size. */
@@ -36,4 +90,10 @@ body {
 	align-items: center;
 	justify-content: center;
 	background-color: white;
+}
+
+/********************** Conditionals **********************/
+
+.inactive {
+	display: none;
 }
